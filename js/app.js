@@ -46,6 +46,7 @@ function buildNavItem(section) {
 
 // build the nav
 function buildNavMenu() {
+    const fragment = document.createDocumentFragment();
     for (let section of sections) {
 
         let formatedData = {
@@ -54,9 +55,10 @@ function buildNavMenu() {
         }
 
         let navItem = buildNavItem(formatedData);
-
-        navMenu.appendChild(navItem);
+        fragment.appendChild(navItem);
     }
+
+    navMenu.appendChild(fragment);
 }
 
 // Add class 'active' to section when near top of viewport
