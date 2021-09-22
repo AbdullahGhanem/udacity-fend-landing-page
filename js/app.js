@@ -27,9 +27,9 @@ const navMenu = document.getElementById('navbar__list');
  * 
  */
 
+// Scroll to section on link click
 function addScrollIntoAnchorEvent(e) {
     let section = e.target.id.replace("link-", "");
-    // Scroll to anchor ID using scrollTO event 
     //after search about scrollTO i find this great method  https: //developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
     document.querySelector(`#${section}`).scrollIntoView({
         block: "start",
@@ -45,9 +45,9 @@ function buildNavItem(section) {
     a.textContent = section.title;
     a.id = `link-${section.id}`;
     a.href = `#${section.id}`;
-
     // add class active and menu__link if first item, and add menu__link if else
-    a.className = (section.id == 'section1') ? "menu__link active" : "menu__link";
+    a.className = "menu__link";
+    (section.id == 'section1') ? a.classList.add("active"): '';
 
     // Scroll to anchor ID using scrollTO event 
     a.addEventListener('click', addScrollIntoAnchorEvent);
@@ -55,6 +55,15 @@ function buildNavItem(section) {
     return li.appendChild(a);
 }
 
+function isInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
 
 /**
  * End Helper Functions
@@ -79,7 +88,20 @@ function buildNavMenu() {
     navMenu.appendChild(fragment);
 }
 
+
 // Add class 'active' to section when near top of viewport
+function setSectionActiveClass() {
+    for (let section of sections) {
+        let link = document.querySelector(`#link-${section.id}`);
+        section.classList.remove("active");
+        link.classList.remove("active");
+
+        if (isInViewport(section)) {
+            section.classList.add("active");
+            link.classList.add("active");
+        }
+    }
+}
 
 
 
@@ -93,6 +115,7 @@ function buildNavMenu() {
 // Build menu 
 buildNavMenu();
 
-// Scroll to section on link click
-
 // Set sections as active
+window.addEventListener('scroll', function (e) {
+    window.requestAnimationFrame(setSectionActiveClass);
+});
