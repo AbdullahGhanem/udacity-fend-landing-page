@@ -26,6 +26,18 @@ const navMenu = document.getElementById('navbar__list');
  * Start Helper Functions
  * 
  */
+
+function addScrollIntoAnchorEvent(e) {
+    let section = e.target.id.replace("link-", "");
+    // Scroll to anchor ID using scrollTO event 
+    //after search about scrollTO i find this great method  https: //developer.mozilla.org/en-US/docs/Web/API/Element/scrollIntoView
+    document.querySelector(`#${section}`).scrollIntoView({
+        block: "start",
+        behavior: "smooth"
+    });
+    e.preventDefault();
+}
+
 function buildNavItem(section) {
     let li = document.createElement('li');
     let a = document.createElement('a');
@@ -33,6 +45,12 @@ function buildNavItem(section) {
     a.textContent = section.title;
     a.id = `link-${section.id}`;
     a.href = `#${section.id}`;
+
+    // add class active and menu__link if first item, and add menu__link if else
+    a.className = (section.id == 'section1') ? "menu__link active" : "menu__link";
+
+    // Scroll to anchor ID using scrollTO event 
+    a.addEventListener('click', addScrollIntoAnchorEvent);
 
     return li.appendChild(a);
 }
@@ -64,7 +82,6 @@ function buildNavMenu() {
 // Add class 'active' to section when near top of viewport
 
 
-// Scroll to anchor ID using scrollTO event
 
 
 /**
