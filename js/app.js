@@ -55,13 +55,13 @@ function buildNavItem(section) {
     return li.appendChild(a);
 }
 
+//i get this method from https://stackoverflow.com/questions/30943662/check-if-element-is-partially-in-viewport
 function isInViewport(el) {
     const rect = el.getBoundingClientRect();
-    return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    let windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+    return !(
+        Math.floor(100 - (((rect.top >= 0 ? 0 : rect.top) / + -(rect.height / 1)) * 100)) < 50 ||
+        Math.floor(100 - ((rect.bottom - windowHeight) / rect.height) * 100) < 50
     );
 }
 
