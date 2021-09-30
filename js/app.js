@@ -51,8 +51,8 @@ function buildNavItem(section) {
 
     // Scroll to anchor ID using scrollTO event 
     a.addEventListener('click', addScrollIntoAnchorEvent);
-
-    return li.appendChild(a);
+    li.appendChild(a)
+    return li;
 }
 
 //i get this method from https://stackoverflow.com/questions/30943662/check-if-element-is-partially-in-viewport
@@ -80,7 +80,6 @@ function buildNavMenu() {
             'id': section.id,
             'title': section.querySelector('h2').textContent
         }
-
         let navItem = buildNavItem(formatedData);
         fragment.appendChild(navItem);
     }
