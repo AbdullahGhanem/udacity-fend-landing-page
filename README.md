@@ -26,4 +26,4 @@ To get started:
 
 ## Credits
 
-- [:abdullahghanem](https://github.com/:abdullahghanem)
+- [abdullahghanem](https://github.com/abdullahghanem)
