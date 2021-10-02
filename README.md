@@ -2,12 +2,28 @@
 
 ## Table of Contents
 
+* [Introduction](#introduction)
 * [Instructions](#instructions)
+* [Implementations](#implementations)
+* [Credits](#credits)
+
+## Introduction
+This project demonstrates how to build a multi-section landing page, with a dynamically updating navigational menu based on the amount of content that is added to the page.
 
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+To get started: 
+1. git clone https://github.com/AbdullahGhanem/udacity-fend-landing-page
+2. open `index.html`
 
-To get started, open `js/app.js` and start building out the app's functionality
+## Implementations
+ 
+- added new sections
+- the menu is created coorectly
+- the active section is highlighted
+- the link on the menu of the active section is highlighted
+- on click on the menu the page is smooth scrolling to the section
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+## Credits
+
+- [:abdullahghanem](https://github.com/:abdullahghanem)
